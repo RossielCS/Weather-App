@@ -26,7 +26,7 @@ function formSearch(parent) {
   return form;
 }
 
-function temperature(parent, tempData) {
+function addTemperature(parent, tempData) {
   const container = creator(parent, 'section', 'append');
   container.setAttribute('id', 'weather-temperature');
 
@@ -46,25 +46,21 @@ function temperature(parent, tempData) {
   return container;
 }
 
-function table(parent, weatherData, tempData, descrData) {
-  const weather = creator(parent, 'article', 'append');
-  weather.setAttribute('id', 'weather-container');
-
-  const cityName = creator(weather, 'h1', 'append');
-  cityName.setAttribute('id', 'city-name');
-  cityName.innerHTML = `${weatherData.name}`;
-
-  temperature(weather, tempData);
-
-  const description = creator(weather, 'div', 'append');
-  description.innerHTML = `${descrData[0]}`;
+function addDescription(parent, descrData) {
+  const description = creator(parent, 'div', 'append');
   const iconDescr = creator(description, 'img', 'append');
   iconDescr.setAttribute('id', 'weather-icon-descr');
   iconDescr.style.backgroundImage = `url("http://openweathermap.org/img/wn/${descrData[1]}.png")`;
   const textDescr = creator(description, 'h3', 'append');
   textDescr.setAttribute('id', 'weather-text-descr');
+  textDescr.innerHTML = `${descrData[0]}`
+    .split(' ')
+    .map(x => x.charAt(0).toUpperCase() + x.slice(1))
+    .join(' ');
+}
 
-  const otherData = creator(weather, 'div', 'append');
+function addWindAndHumidity(parent, weatherData, tempData) {
+  const otherData = creator(parent, 'div', 'append');
 
   const wind = creator(otherData, 'div', 'append');
   const iconWind = creator(wind, 'i', 'append');
@@ -79,6 +75,19 @@ function table(parent, weatherData, tempData, descrData) {
   const textHum = creator(humidity, 'p', 'append');
   textHum.setAttribute('id', 'weather-text-hum');
   textHum.innerHTML = `${tempData[4]} %`;
+}
+
+function table(parent, weatherData, tempData, descrData) {
+  const weather = creator(parent, 'article', 'append');
+  weather.setAttribute('id', 'weather-container');
+
+  const cityName = creator(weather, 'h1', 'append');
+  cityName.setAttribute('id', 'city-name');
+  cityName.innerHTML = `${weatherData.name}`;
+
+  addTemperature(weather, tempData);
+  addDescription(weather, descrData);
+  addWindAndHumidity(weather, weatherData, tempData);
 
   return weather;
 }

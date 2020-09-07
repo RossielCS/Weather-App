@@ -1,3 +1,7 @@
+function getInputsValues(params) {
+  
+}
+
 function modifyInput(input) {
   return input.replace(/\W{1,}/g, ' ')
     .toLowerCase()

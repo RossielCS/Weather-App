@@ -27,3 +27,13 @@
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'liga';
 }
+
+article {
+  div {
+    #weather-icon-descr {
+      height: 50px;
+      width: 50px;
+      border: none;
+    }
+  }
+}

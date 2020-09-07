@@ -1,6 +1,6 @@
 import './assets/stylesheets/style.scss';
-// import
 import { filterWeather, filterMain, filterWind } from './modules/data';
+import { creator, formSearch } from './modules/dom';
 
 const weatherData = {
   coord: { lon: -0.13, lat: 51.51 },
@@ -35,6 +35,9 @@ const weatherData = {
   cod: 200,
 };
 
+const content = document.getElementById('content');
+
 filterWeather(weatherData);
 filterMain(weatherData);
 filterWind(weatherData);
+formSearch(content);

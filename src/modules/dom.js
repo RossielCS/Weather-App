@@ -19,12 +19,19 @@ function formSearch(parent) {
   const button = creator(form, 'button', 'append');
   button.setAttribute('type', 'submit');
 
+  const icon = creator(button, 'span', 'append');
+  icon.setAttribute('class', 'material-icons');
+  icon.innerHTML = 'search';
+
   return form;
 }
-
+/*
 function createWeatherTable(content) {
   const main = creator(content, 'main', 'append');
-  const formSearch = creator(content, 'form');
-}
 
-export default creator;
+  const formSearch = formSearch(main);
+
+  const table =
+}
+*/
+export { creator, formSearch };

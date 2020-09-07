@@ -38,7 +38,16 @@ function createRadioBtn(radioContainer, radioButtons, i) {
 
 function addCBToSearchBtn(button, content) {
   button.addEventListener('click', () => {
-    
+    const inputs = document.getElementsByClassName('weather-input');
+    const values = getInputsValues(inputs);
+    const cityName = modifyInput(values[0], values[1]);
+    const data = getWeather(cityName);
+
+    const descrData = filterWeather(data);
+    const tempData = filterMain(data);
+
+    // eslint-disable-next-line no-use-before-define
+    createWeatherDisplay(content, data, tempData, descrData);
   });
 }
 

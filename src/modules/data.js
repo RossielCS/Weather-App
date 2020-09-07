@@ -1,4 +1,17 @@
+function getInputsValues(inputs) {
+  const allInputs = [...inputs];
+  const values = [];
+  for (let i = 0; i < allInputs.length; i += 1) {
+    if (allInputs[i].type === 'text' && allInputs[i].value === '') return false;
 
+    if (allInputs[i].type === 'radio') {
+      if (allInputs[i].checked) values.push(allInputs[i].value);
+    } else {
+      values.push(allInputs[i].value);
+    }
+  }
+  return values;
+}
 
 function modifyInput(input, units) {
   console.log(input.replace(/\W{1,}/g, ' ')

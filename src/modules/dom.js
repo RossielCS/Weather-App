@@ -1,3 +1,7 @@
+const radioButtons = [
+  ['standar', '01'], ['metric', '02'], ['imperial', '03'],
+];
+
 function creator(parent, newElement, position) {
   const child = document.createElement(`${newElement}`);
   if (position === 'append') {
@@ -6,6 +10,18 @@ function creator(parent, newElement, position) {
     parent.insertBefore(child, position);
   }
   return child;
+}
+
+function createRadioBtn(radioContainer, radioButtons, i) {
+  const radioBox = creator(radioContainer, 'div', 'append');
+
+  const radio = creator(radioBox, 'input', 'append');
+  radio.setAttribute('type', 'radio');
+  radio.setAttribute('value', `${radioButtons[i][1]}`);
+  const label = creator(radioBox, 'label', 'append');
+  label.setAttribute('for', `${radioButtons[i][0]}`);
+  label.innerHTML = `${radioButtons[i][0]}`;
+  if (i === 1) radio.checked = true;
 }
 
 function formSearch(parent) {
@@ -22,6 +38,15 @@ function formSearch(parent) {
   const icon = creator(button, 'span', 'append');
   icon.setAttribute('class', 'material-icons');
   icon.innerHTML = 'search';
+
+  const priorityTitle = creator(form, 'p', 'append');
+  priorityTitle.innerHTML = 'Priority:';
+  const radioContainer = creator(form, 'div', 'append');
+  radioContainer.setAttribute('class', 'radio-container');
+
+  for (let i = 0; i < radioButtons.length; i += 1) {
+    createRadioBtn(radioContainer, radioButtons, i);
+  }
 
   return form;
 }

@@ -1,5 +1,5 @@
 import './assets/stylesheets/style.scss';
-import { filterWeather, filterMain, filterWind } from './modules/data';
+import { filterWeather, filterMain } from './modules/data';
 import createWeatherDisplay from './modules/dom';
 
 const weatherData = {
@@ -39,7 +39,5 @@ const content = document.getElementById('content');
 
 const descrData = filterWeather(weatherData);
 const tempData = filterMain(weatherData);
-filterWind(weatherData);
-
 
 createWeatherDisplay(content, weatherData, tempData, descrData);

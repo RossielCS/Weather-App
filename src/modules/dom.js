@@ -1,6 +1,17 @@
+import {
+  getInputsValues, modifyInput, getWeather,
+  filterWeather, filterMain,
+} from './data';
+
 const radioButtons = [
   ['standar', '01'], ['metric', '02'], ['imperial', '03'],
 ];
+
+const units = {
+  '01': '',
+  '02': '&units=metric',
+  '03': '&units=imperial',
+};
 
 function creator(parent, newElement, position) {
   const child = document.createElement(`${newElement}`);
@@ -18,10 +29,17 @@ function createRadioBtn(radioContainer, radioButtons, i) {
   const radio = creator(radioBox, 'input', 'append');
   radio.setAttribute('type', 'radio');
   radio.setAttribute('value', `${radioButtons[i][1]}`);
+  radio.setAttribute('class', 'weather-input');
   const label = creator(radioBox, 'label', 'append');
   label.setAttribute('for', `${radioButtons[i][0]}`);
   label.innerHTML = `${radioButtons[i][0]}`;
-  if (i === 1) radio.checked = true;
+  if (i === 0) radio.checked = true;
+}
+
+function addCBToSearchBtn(button, content) {
+  button.addEventListener('click', () => {
+    
+  });
 }
 
 function formSearch(parent) {
@@ -31,9 +49,12 @@ function formSearch(parent) {
   input.setAttribute('name', 'search');
   input.setAttribute('type', 'text');
   input.setAttribute('placeholder', 'Write the city name here');
+  input.setAttribute('class', 'weather-input');
 
   const button = creator(form, 'button', 'append');
   button.setAttribute('type', 'submit');
+  button.setAttribute('id', 'search-btn');
+  addCBToSearchBtn(button);
 
   const icon = creator(button, 'span', 'append');
   icon.setAttribute('class', 'material-icons');

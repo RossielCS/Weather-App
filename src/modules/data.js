@@ -1,13 +1,19 @@
-function getInputsValues(params) {
-  
-}
 
-function modifyInput(input) {
+
+function modifyInput(input, units) {
+  console.log(input.replace(/\W{1,}/g, ' ')
+    .toLowerCase()
+    .split(' ')
+    .map(x => x.charAt(0).toUpperCase() + x.slice(1))
+    .join('+')
+    .concat(units));
+
   return input.replace(/\W{1,}/g, ' ')
     .toLowerCase()
     .split(' ')
     .map(x => x.charAt(0).toUpperCase() + x.slice(1))
-    .join('+');
+    .join('+')
+    .concat(units);
 }
 
 function getWeather(cityName) {
@@ -18,13 +24,6 @@ function getWeather(cityName) {
     .then((response) => {
       if (!response.ok) throw Error('City not Found.');
       return response.json();
-    })
-    .then((response) => {
-      console.log(response);
-      document.getElementById('content').innerHTML = `${JSON.stringify(
-        response,
-      )}`;
-      // return response;
     })
     .catch((err) => {
       console.log(err);
@@ -44,8 +43,6 @@ function filterMain(weatherData) {
   return [temp, feelsLike, tempMin, tempMax, humidity];
 }
 
-function filterWind(weatherData) {
-  return weatherData.wind.speed;
-}
-
-export { filterWeather, filterMain, filterWind };
+export {
+  getInputsValues, modifyInput, getWeather, filterWeather, filterMain,
+};

@@ -50,7 +50,35 @@ function table(parent, weatherData, tempData, descrData) {
   const weather = creator(parent, 'article', 'append');
   weather.setAttribute('id', 'weather-container');
 
-  
+  const cityName = creator(weather, 'h1', 'append');
+  cityName.setAttribute('id', 'city-name');
+  cityName.innerHTML = `${weatherData.name}`;
+
+  temperature(weather, tempData);
+
+  const description = creator(weather, 'div', 'append');
+  description.innerHTML = `${descrData[0]}`;
+  const iconDescr = creator(description, 'img', 'append');
+  iconDescr.setAttribute('id', 'weather-icon-descr');
+  iconDescr.style.backgroundImage = `url("http://openweathermap.org/img/wn/${descrData[1]}.png")`;
+  const textDescr = creator(description, 'h3', 'append');
+  textDescr.setAttribute('id', 'weather-text-descr');
+
+  const otherData = creator(weather, 'div', 'append');
+
+  const wind = creator(otherData, 'div', 'append');
+  const iconWind = creator(wind, 'i', 'append');
+  iconWind.setAttribute('id', 'weather-icon-wind');
+  const textWind = creator(wind, 'p', 'append');
+  textWind.setAttribute('id', 'weather-text-wind');
+  textWind.innerHTML = `${weatherData.wind.speed} m/s`;
+
+  const humidity = creator(otherData, 'div', 'append');
+  const iconHum = creator(humidity, 'i', 'append');
+  iconHum.setAttribute('id', 'weather-icon-hum');
+  const textHum = creator(humidity, 'p', 'append');
+  textHum.setAttribute('id', 'weather-text-hum');
+  textHum.innerHTML = `${tempData[4]} %`;
 
   return weather;
 }

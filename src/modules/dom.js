@@ -23,6 +23,22 @@ function creator(parent, newElement, position) {
   return child;
 }
 
+function createModal(main) {
+  const modalWindow = creator(main, 'div', 'append');
+  modalWindow.setAttribute('class', 'modal');
+  modalWindow.setAttribute('class', 'error-msg');
+
+  const modal = creator(modalWindow, 'div', 'append');
+  modal.setAttribute('class', 'modal-content');
+
+  const header = creator(modal, 'h3', 'append');
+  header.innerHTML = 'Error';
+
+  const message = creator(modal, 'p', 'append');
+  message.innerHTML = 'The city provided could not be found.';
+  return modalWindow;
+}
+
 function createRadioBtn(radioContainer, radioButtons, i) {
   const radioBox = creator(radioContainer, 'div', 'append');
 
@@ -36,18 +52,24 @@ function createRadioBtn(radioContainer, radioButtons, i) {
   if (i === 0) radio.checked = true;
 }
 
-function addCBToSearchBtn(button, content) {
+function addCBToSearchBtn(button, main) {
   button.addEventListener('click', () => {
     const inputs = document.getElementsByClassName('weather-input');
     const values = getInputsValues(inputs);
-    const cityName = modifyInput(values[0], values[1]);
-    const data = getWeather(cityName);
+    // const content = document.getElementById('content');
+    if (values) {
+      const cityName = modifyInput(values[0], values[1]);
+      const data = getWeather(cityName);
+      if (data instanceof Error || typeof data === 'string') {
+        createModal(main);
+      } else {
+        const descrData = filterWeather(data);
+        const tempData = filterMain(data);
 
-    const descrData = filterWeather(data);
-    const tempData = filterMain(data);
-
-    // eslint-disable-next-line no-use-before-define
-    createWeatherDisplay(content, data, tempData, descrData);
+        // eslint-disable-next-line no-use-before-define
+        createWeatherDisplay(main, data, tempData, descrData);
+      }
+    }
   });
 }
 
@@ -59,11 +81,12 @@ function formSearch(parent) {
   input.setAttribute('type', 'text');
   input.setAttribute('placeholder', 'Write the city name here');
   input.setAttribute('class', 'weather-input');
+  input.required = true;
 
   const button = creator(form, 'button', 'append');
   button.setAttribute('type', 'submit');
   button.setAttribute('id', 'search-btn');
-  addCBToSearchBtn(button);
+  addCBToSearchBtn(button, parent);
 
   const icon = creator(button, 'span', 'append');
   icon.setAttribute('class', 'material-icons');

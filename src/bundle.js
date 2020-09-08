@@ -41,3 +41,65 @@ const descrData = filterWeather(weatherData);
 const tempData = filterMain(weatherData);
 
 createWeatherDisplay(content, weatherData, tempData, descrData);
+
+function getWeather(cityName) {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=7a075fa45323323813d5c357e54b030e`,
+    { mode: 'cors' },
+  )
+    .then((response) => {
+      if (!response.ok) throw Error('City not Found.');
+      return response.json();
+    })
+    .catch(() => 'Error');
+}
+
+getWeather('Buenos  Aires');
+
+/*
+const options = {
+  enableHighAccuracy: true,
+  timeout: 5000,
+  maximumAge: 0,
+};
+
+function success(pos) {
+  const crd = pos.coords;
+  return [crd.latitude, crd.longitude];
+}
+
+function error(err) {
+  return `${err.message}`;
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+
+function getLocalWeather(location) {
+  fetch(
+    `https://api.openweathermap.org/data/2.5/weather?lat=${location[0]}&lon=${location[1]}&appid=7a075fa45323323813d5c357e54b030e`,
+    { mode: 'cors' },
+  )
+    .then((response) => {
+      if (!response.ok) throw Error('City not Found.');
+      return response.json();
+    })
+    .catch(() => 'Error');
+}
+
+async function getLocation(success, error, options) {
+  const location = await navigator.geolocation.getCurrentPosition(success, error, options);
+  const defaultLoc = [-0.13, 51.51];
+  return typeof location === 'object' ? getLocalWeather(location) : getLocalWeather(defaultLoc);
+}
+
+async function displayLocation(locationData) {
+  const weatherData = await locationData;
+  const data = weatherData;
+  console.log(data);
+  /* const descrData = filterWeather(weatherData);
+  const tempData = filterMain(weatherData);
+  createWeatherDisplay(content, weatherData, tempData, descrData);
+}
+
+displayLocation(getLocation(success, error, options));
+*/

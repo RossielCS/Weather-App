@@ -38,9 +38,7 @@ function getWeather(cityName) {
       if (!response.ok) throw Error('City not Found.');
       return response.json();
     })
-    .catch((err) => {
-      console.log(err);
-    });
+    .catch(() => 'Error');
 }
 
 function filterWeather(weatherData) {

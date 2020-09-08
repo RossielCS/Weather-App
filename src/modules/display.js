@@ -12,7 +12,7 @@ function addTemperature(parent, tempData, symbols) {
 
   const temp = creator(container, 'div', 'append');
   const tempMain = creator(temp, 'h2', 'append');
-  const radioInputs = document.getElementsByClassName('weather-input');
+  const radioInputs = document.getElementsByClassName('radio-input');
   [...radioInputs].forEach(x => {
     if (x.checked) {
       tempMain.innerHTML = `${tempData[0]}${symbols[x.value]}`;

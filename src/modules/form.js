@@ -1,5 +1,5 @@
 import { creator, createModal } from './helpers';
-import { createWeatherDisplay } from './display';
+import { createWeatherDisplay, symbols } from './display';
 import {
   getInputsValues, modifyInput, getWeather,
   filterDescr, filterTemp,
@@ -22,7 +22,7 @@ function createRadioBtn(radioContainer, radioButtons, i) {
   radio.setAttribute('type', 'radio');
   radio.setAttribute('value', `${radioButtons[i][1]}`);
   radio.setAttribute('id', `${radioButtons[i][0]}`);
-  radio.setAttribute('class', 'weather-input');
+  radio.setAttribute('class', 'weather-input radio-input');
   radio.setAttribute('name', 'units');
   const label = creator(radioBox, 'label', 'append');
   label.setAttribute('for', `${radioButtons[i][0]}`);
@@ -45,7 +45,7 @@ function addCBToSearchBtn(button, main, units) {
         const tempData = filterTemp(data);
 
         // eslint-disable-next-line no-use-before-define
-        createWeatherDisplay(main, data, tempData, descrData);
+        createWeatherDisplay(main, data, tempData, descrData, symbols);
       } else {
         createModal(main);
       }

@@ -9,6 +9,28 @@ const symbols = {
 function setValues(symbols, ...params) {
   const [cityName, temp, feelsLike, tempMin, tempMax,
     description, icon, windSpeed, humidity] = [...params];
+
+  document.getElementById('city-name').innerHTML = `${cityName}`;
+  const tempMain = document.getElementById('weather-temp-main');
+  const radioInputs = document.getElementsByClassName('radio-input');
+  [...radioInputs].forEach(x => {
+    if (x.checked) {
+      tempMain.innerHTML = `${temp}${symbols[x.value]}`;
+    }
+  });
+
+  const tempMinMax = document.getElementById('weather-minmax').children;
+  tempMinMax[0].innerHTML = `${tempMin}`;
+  tempMinMax[1].innerHTML = `${tempMax}`;
+
+  document.getElementById('weather-feels-like').innerHTML = `RealFeel ${feelsLike}`;
+  document.getElementById('weather-icon-descr').style.backgroundImage = `url("http://openweathermap.org/img/wn/${icon}.png")`;
+  document.getElementById('weather-text-descr').innerHTML = `${description}`
+    .split(' ')
+    .map(x => x.charAt(0).toUpperCase() + x.slice(1))
+    .join(' ');
+  document.getElementById('weather-text-wind').innerHTML = `${windSpeed} m/s`;
+  document.getElementById('weather-text-hum').innerHTML = `${humidity} %`;
 }
 
 function addTemperature(parent) {

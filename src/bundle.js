@@ -1,7 +1,7 @@
 import './assets/stylesheets/style.scss';
 import { creator } from './modules/helpers';
-import { filterWeather, filterMain, getWeather } from './modules/data';
-import createWeatherDisplay from './modules/display';
+import { filterDescr, filterTemp, getWeather } from './modules/data';
+import { createWeatherDisplay, symbols } from './modules/display';
 import { formSearch, units } from './modules/form';
 
 const content = document.getElementById('content');
@@ -17,17 +17,16 @@ const options = {
 async function success(pos) {
   const crd = pos.coords;
   const weatherData = await getWeather(crd);
-  const tempData = filterMain(weatherData);
-  const descrData = filterWeather(weatherData);
-
-  createWeatherDisplay(main, weatherData, tempData, descrData);
+  const tempData = filterTemp(weatherData);
+  const descrData = filterDescr(weatherData);
+  createWeatherDisplay(main, weatherData, tempData, descrData, symbols);
 }
 
 async function error(err) {
   const weatherData = await getWeather('London');
-  const tempData = filterMain(weatherData);
-  const descrData = filterWeather(weatherData);
-  createWeatherDisplay(main, weatherData, tempData, descrData);
+  const tempData = filterTemp(weatherData);
+  const descrData = filterDescr(weatherData);
+  createWeatherDisplay(main, weatherData, tempData, descrData, symbols);
   return err;
 }
 

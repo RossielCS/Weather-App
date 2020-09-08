@@ -1,8 +1,8 @@
 import { creator, createModal } from './helpers';
-import createWeatherDisplay from './display';
+import { createWeatherDisplay } from './display';
 import {
   getInputsValues, modifyInput, getWeather,
-  filterWeather, filterMain,
+  filterDescr, filterTemp,
 } from './data';
 
 const radioButtons = [
@@ -23,10 +23,11 @@ function createRadioBtn(radioContainer, radioButtons, i) {
   radio.setAttribute('value', `${radioButtons[i][1]}`);
   radio.setAttribute('id', `${radioButtons[i][0]}`);
   radio.setAttribute('class', 'weather-input');
+  radio.setAttribute('name', 'units');
   const label = creator(radioBox, 'label', 'append');
   label.setAttribute('for', `${radioButtons[i][0]}`);
   label.innerHTML = `${radioButtons[i][0]}`;
-  if (i === 1) radio.checked = true;
+  if (i === 0) radio.checked = true;
 }
 
 function addCBToSearchBtn(button, main, units) {
@@ -40,8 +41,8 @@ function addCBToSearchBtn(button, main, units) {
       const cityName = modifyInput(values[0], units[values[1]]);
       const data = await getWeather(cityName);
       if (data) {
-        const descrData = filterWeather(data);
-        const tempData = filterMain(data);
+        const descrData = filterDescr(data);
+        const tempData = filterTemp(data);
 
         // eslint-disable-next-line no-use-before-define
         createWeatherDisplay(main, data, tempData, descrData);

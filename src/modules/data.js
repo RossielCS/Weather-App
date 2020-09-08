@@ -14,13 +14,6 @@ function getInputsValues(inputs) {
 }
 
 function modifyInput(input, units) {
-  console.log(input.replace(/\W{1,}/g, ' ')
-    .toLowerCase()
-    .split(' ')
-    .map(x => x.charAt(0).toUpperCase() + x.slice(1))
-    .join('+')
-    .concat(units));
-
   return input.replace(/\W{1,}/g, ' ')
     .toLowerCase()
     .split(' ')
@@ -50,12 +43,12 @@ async function getWeather(locationInfo) {
   return false;
 }
 
-function filterWeather(weatherData) {
+function filterDescr(weatherData) {
   const { description, icon } = weatherData.weather[0];
   return [description, icon];
 }
 
-function filterMain(weatherData) {
+function filterTemp(weatherData) {
   const { temp, humidity } = weatherData.main;
   const feelsLike = weatherData.main.feels_like;
   const tempMin = weatherData.main.temp_min;
@@ -64,5 +57,5 @@ function filterMain(weatherData) {
 }
 
 export {
-  getInputsValues, modifyInput, getWeather, filterWeather, filterMain,
+  getInputsValues, modifyInput, getWeather, filterDescr, filterTemp,
 };

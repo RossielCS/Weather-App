@@ -1,12 +1,23 @@
 import { creator } from './helpers';
 
-function addTemperature(parent, tempData) {
+const symbols = {
+  '01': 'K',
+  '02': '°C',
+  '03': '°F',
+};
+
+function addTemperature(parent, tempData, symbols) {
   const container = creator(parent, 'section', 'append');
   container.setAttribute('id', 'weather-temperature');
 
   const temp = creator(container, 'div', 'append');
   const tempMain = creator(temp, 'h2', 'append');
-  tempMain.innerHTML = `${tempData[0]}`;
+  const radioInputs = document.getElementsByClassName('weather-input');
+  [...radioInputs].forEach(x => {
+    if (x.checked) {
+      tempMain.innerHTML = `${tempData[0]}${symbols[x.value]}`;
+    }
+  });
 
   const minMax = creator(temp, 'div', 'append');
   const tempMin = creator(minMax, 'p', 'append');
@@ -51,19 +62,20 @@ function addWindAndHumidity(parent, weatherData, tempData) {
   textHum.innerHTML = `${tempData[4]} %`;
 }
 
-function createWeatherDisplay(parent, weatherData, tempData, descrData) {
-  const weather = creator(parent, 'article', 'append');
+function createWeatherDisplay(...params) {
+  const [main, weatherData, tempData, descrData, symbols] = [...params];
+  const weather = creator(main, 'article', 'append');
   weather.setAttribute('id', 'weather-container');
 
   const cityName = creator(weather, 'h1', 'append');
   cityName.setAttribute('id', 'city-name');
   cityName.innerHTML = `${weatherData.name}`;
 
-  addTemperature(weather, tempData);
+  addTemperature(weather, tempData, symbols);
   addDescription(weather, descrData);
   addWindAndHumidity(weather, weatherData, tempData);
 
   return weather;
 }
 
-export default createWeatherDisplay;
+export { createWeatherDisplay, symbols };

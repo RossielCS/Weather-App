@@ -12,8 +12,8 @@ $terciary-color: #595757;
 
 #content {
   margin: auto;
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   color: $secondary-color;
   background-color: $terciary-color-dark;
   font-family: 'Work Sans', sans-serif;

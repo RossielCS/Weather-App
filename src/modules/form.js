@@ -34,16 +34,15 @@ function addCBToSearchBtn(button, main, units) {
     e.preventDefault();
     const inputs = document.getElementsByClassName('weather-input');
     const values = getInputsValues(inputs);
-    const weatherCont = document.getElementById('weather-container');
-    if (weatherCont) weatherCont.remove();
     if (values) {
       const cityName = modifyInput(values[0], units[values[1]]);
       const data = await getWeather(cityName);
       if (data) {
         const allData = filterData(data);
-        setValues(symbols, allData);
+        setValues(symbols, ...allData);
       } else {
         createModal(main);
+        document.getElementById('error-msg').style.display = 'block';
       }
     }
   });

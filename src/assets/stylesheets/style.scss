@@ -1,6 +1,7 @@
 @import 'reset';
 @import 'variables';
 @import 'mixins';
+@import 'modal';
 
 /*
 $terciary-color-dark: #0a0607;
@@ -40,9 +41,10 @@ $terciary-color: #595757;
 main {
   margin: auto;
   height: 100%;
-  width: 60%;
+  width: 100%;
+  max-width: 1024px;
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 250px 4fr 250px;
   grid-template-rows: 1fr 0.5fr minmax(60vh, 80vh);
 
   form {
@@ -55,7 +57,10 @@ main {
     grid-row: 3/4;
     height: 70%;
     width: 100%;
+    max-width: 500px;
+    max-height: 500px;
     padding: 20px;
+    margin: 0 auto;
     border-radius: 20px;
     border: 1px solid $secondary-color;
 
@@ -69,6 +74,6 @@ main {
   }
 }
 
-.error-msg {
+#error-msg {
   display: none;
 }

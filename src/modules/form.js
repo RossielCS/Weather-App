@@ -73,7 +73,7 @@ function formSearch(parent, units) {
   icon.innerHTML = 'search';
 
   const priorityTitle = creator(form, 'p', 'append');
-  priorityTitle.innerHTML = 'Priority:';
+  priorityTitle.innerHTML = 'Select unit format:';
   const radioContainer = creator(form, 'div', 'append');
   radioContainer.setAttribute('class', 'radio-container');
 

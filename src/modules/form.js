@@ -1,8 +1,7 @@
 import { creator, createModal } from './helpers';
-import { createWeatherDisplay, symbols } from './display';
+import { setValues, symbols } from './display';
 import {
-  getInputsValues, modifyInput, getWeather,
-  filterDescr, filterTemp,
+  getInputsValues, modifyInput, getWeather, filterData,
 } from './data';
 
 const radioButtons = [
@@ -41,11 +40,8 @@ function addCBToSearchBtn(button, main, units) {
       const cityName = modifyInput(values[0], units[values[1]]);
       const data = await getWeather(cityName);
       if (data) {
-        const descrData = filterDescr(data);
-        const tempData = filterTemp(data);
-
-        // eslint-disable-next-line no-use-before-define
-        createWeatherDisplay(main, data, tempData, descrData, symbols);
+        const allData = filterData(data);
+        setValues(symbols, allData);
       } else {
         createModal(main);
       }

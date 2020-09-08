@@ -1,12 +1,13 @@
 import './assets/stylesheets/style.scss';
 import { creator } from './modules/helpers';
-import { filterDescr, filterTemp, getWeather } from './modules/data';
-import { createWeatherDisplay, symbols } from './modules/display';
+import { filterData, getWeather } from './modules/data';
+import { createWeatherDisplay, setValues, symbols } from './modules/display';
 import { formSearch, units } from './modules/form';
 
 const content = document.getElementById('content');
 const main = creator(content, 'main', 'append');
 formSearch(main, units);
+createWeatherDisplay(main);
 
 const options = {
   enableHighAccuracy: true,
@@ -17,16 +18,14 @@ const options = {
 async function success(pos) {
   const crd = pos.coords;
   const weatherData = await getWeather(crd);
-  const tempData = filterTemp(weatherData);
-  const descrData = filterDescr(weatherData);
-  createWeatherDisplay(main, weatherData, tempData, descrData, symbols);
+  const allData = filterData(weatherData);
+  setValues(symbols, ...allData);
 }
 
 async function error(err) {
   const weatherData = await getWeather('London');
-  const tempData = filterTemp(weatherData);
-  const descrData = filterDescr(weatherData);
-  createWeatherDisplay(main, weatherData, tempData, descrData, symbols);
+  const allData = filterData(weatherData);
+  setValues(symbols, ...allData);
   return err;
 }
 

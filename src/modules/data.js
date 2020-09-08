@@ -43,19 +43,18 @@ async function getWeather(locationInfo) {
   return false;
 }
 
-function filterDescr(weatherData) {
+function filterData(weatherData) {
+  const cityName = weatherData.name;
   const { description, icon } = weatherData.weather[0];
-  return [description, icon];
-}
-
-function filterTemp(weatherData) {
   const { temp, humidity } = weatherData.main;
   const feelsLike = weatherData.main.feels_like;
   const tempMin = weatherData.main.temp_min;
   const tempMax = weatherData.main.temp_max;
-  return [temp, feelsLike, tempMin, tempMax, humidity];
+  const windSpeed = weatherData.wind.speed;
+  return [cityName, temp, feelsLike, tempMin, tempMax,
+    description, icon, windSpeed, humidity];
 }
 
 export {
-  getInputsValues, modifyInput, getWeather, filterDescr, filterTemp,
+  getInputsValues, modifyInput, getWeather, filterData,
 };

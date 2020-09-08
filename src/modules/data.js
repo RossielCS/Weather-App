@@ -29,16 +29,25 @@ function modifyInput(input, units) {
     .concat(units);
 }
 
-function getWeather(cityName) {
-  fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=7a075fa45323323813d5c357e54b030e`,
-    { mode: 'cors' },
-  )
-    .then((response) => {
-      if (!response.ok) throw Error('City not Found.');
-      return response.json();
-    })
-    .catch(() => 'Error');
+function errHandler() {
+  const result = new Response(
+    JSON.stringify({ message: 'City not found.' }),
+  );
+  return result;
+}
+
+async function getWeather(locationInfo) {
+  let response = '';
+  if (locationInfo.latitude) {
+    response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${locationInfo.latitude}&lon=${locationInfo.longitude}&APPID=7a075fa45323323813d5c357e54b030e`, { mode: 'cors' }).catch(errHandler);
+  } else {
+    response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationInfo}&APPID=7a075fa45323323813d5c357e54b030e`, { mode: 'cors' }).catch(errHandler);
+  }
+  const weatherData = await response.json();
+  if (weatherData && response.ok) {
+    return weatherData;
+  }
+  return false;
 }
 
 function filterWeather(weatherData) {

@@ -1,3 +1,4 @@
+import { creator } from './helpers';
 import img1D from '../assets/images/01d.png';
 import img1N from '../assets/images/01n.png';
 import img2D from '../assets/images/02d.png';
@@ -36,4 +37,17 @@ const iconList = {
   '13n': img13N,
   '50d': img50D,
   '50n': img50N,
+};
+
+function createBGContainer(main) {
+  const background = creator(main, 'img', 'append');
+  background.setAttribute('id', 'bg-image');
 }
+
+function setBGImage(iconList, iconIndex) {
+  const background = document.getElementById('bg-image');
+  const icon = iconList[iconIndex];
+  background.setAttribute('src', `${icon}`);
+}
+
+export { createBGContainer, setBGImage, iconList };

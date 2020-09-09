@@ -24,7 +24,7 @@ function setValues(symbols, ...params) {
   tempMinMax[1].innerHTML = `${tempMax}`;
 
   document.getElementById('weather-feels-like').innerHTML = `RealFeel ${feelsLike}`;
-  document.getElementById('weather-icon-descr').style.backgroundImage = `url("http://openweathermap.org/img/wn/${icon}.png")`;
+  document.getElementById('weather-icon-descr').setAttribute('src', `http://openweathermap.org/img/wn/${icon}.png`);
   document.getElementById('weather-text-descr').innerHTML = `${description}`
     .split(' ')
     .map(x => x.charAt(0).toUpperCase() + x.slice(1))

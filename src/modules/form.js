@@ -51,14 +51,17 @@ function addCBToSearchBtn(button, main, units) {
 function formSearch(parent, units) {
   const form = creator(parent, 'form', 'append');
 
-  const input = creator(form, 'input', 'append');
+  const searchContainer = creator(form, 'div', 'append');
+  searchContainer.setAttribute('id', 'search-container');
+
+  const input = creator(searchContainer, 'input', 'append');
   input.setAttribute('name', 'search');
   input.setAttribute('type', 'text');
-  input.setAttribute('placeholder', 'Write the city name here');
+  input.setAttribute('placeholder', 'Search...');
   input.setAttribute('class', 'weather-input');
   input.required = true;
 
-  const button = creator(form, 'button', 'append');
+  const button = creator(searchContainer, 'button', 'append');
   button.setAttribute('type', 'submit');
   button.setAttribute('id', 'search-btn');
   addCBToSearchBtn(button, parent, units);

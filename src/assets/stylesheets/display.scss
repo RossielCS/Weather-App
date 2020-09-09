@@ -1,0 +1,56 @@
+@import 'variables';
+@import 'mixins';
+
+#weather-container {
+  z-index: 3;
+  grid-column: 2/3;
+  grid-row: 3/4;
+  height: 70%;
+  width: 100%;
+  max-width: 500px;
+  max-height: 500px;
+  padding: 20px;
+  margin: 0 auto;
+  border-radius: 20px;
+  border: 1px solid $secondary-color;
+
+  #city-name {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  #weather-temperature {
+    margin: 20px 0;
+
+    div {
+      @include flex(row, space-around, center);
+
+      #weather-temp-main {
+        padding-right: 19px;
+        font-size: 3.5rem;
+        border-right: 1px solid $secondary-color;
+      }
+
+      #weather-minmax {
+        padding-left: 15px;
+
+        @include flex(column, center, flex-start);
+
+        font-size: 1.5rem;
+      }
+    }
+
+    p {
+      margin-top: 10px;
+      text-align: center;
+    }
+  }
+
+  &:nth-child(3) {
+    #weather-icon-descr {
+      height: 50px;
+      width: 50px;
+      border: none;
+    }
+  }
+}

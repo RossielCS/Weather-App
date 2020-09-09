@@ -2,6 +2,7 @@
 @import 'variables';
 @import 'mixins';
 @import 'modal';
+@import 'display';
 
 /*
 $terciary-color-dark: #0a0607;
@@ -105,36 +106,7 @@ main {
     z-index: 1;
     top: 40px;
     right: 50px;
-    // grid-column: 2/3;
-    // grid-row: 2/3;
     height: 240px;
     width: 240px;
-    // margin: auto;
   }
-
-  article {
-    z-index: 3;
-    grid-column: 2/3;
-    grid-row: 3/4;
-    height: 70%;
-    width: 100%;
-    max-width: 500px;
-    max-height: 500px;
-    padding: 20px;
-    margin: 0 auto;
-    border-radius: 20px;
-    border: 1px solid $secondary-color;
-
-    div {
-      #weather-icon-descr {
-        height: 50px;
-        width: 50px;
-        border: none;
-      }
-    }
-  }
-}
-
-#error-msg {
-  display: none;
 }

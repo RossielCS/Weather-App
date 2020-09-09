@@ -5,7 +5,7 @@ import {
 } from './data';
 
 const radioButtons = [
-  ['standar', '01'], ['metric', '02'], ['imperial', '03'],
+  ['kelvin', '01'], ['celsius', '02'], ['fahrenheit', '03'],
 ];
 
 const units = {
@@ -25,8 +25,11 @@ function createRadioBtn(radioContainer, radioButtons, i) {
   radio.setAttribute('name', 'units');
   const label = creator(radioBox, 'label', 'append');
   label.setAttribute('for', `${radioButtons[i][0]}`);
-  label.innerHTML = `${radioButtons[i][0]}`;
-  if (i === 0) radio.checked = true;
+  label.innerHTML = `${radioButtons[i][0].charAt(0)
+    .toUpperCase()
+    .concat(radioButtons[i][0]
+      .slice(1))}`;
+  if (i === 1) radio.checked = true;
 }
 
 function addCBToSearchBtn(button, main, units) {
@@ -71,7 +74,7 @@ function formSearch(parent, units) {
   icon.innerHTML = 'search';
 
   const priorityTitle = creator(form, 'p', 'append');
-  priorityTitle.innerHTML = 'Select unit format:';
+  priorityTitle.innerHTML = 'Select Unit Format:';
   const radioContainer = creator(form, 'div', 'append');
   radioContainer.setAttribute('class', 'radio-container');
 

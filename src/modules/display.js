@@ -15,7 +15,7 @@ function setValues(symbols, ...params) {
   const radioInputs = document.getElementsByClassName('radio-input');
   [...radioInputs].forEach(x => {
     if (x.checked) {
-      tempMain.innerHTML = `${temp}${symbols[x.value]}`;
+      tempMain.innerHTML = `${temp} ${symbols[x.value]}`;
     }
   });
 

@@ -32,9 +32,9 @@ function errHandler() {
 async function getWeather(locationInfo) {
   let response = '';
   if (locationInfo.latitude) {
-    response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${locationInfo.latitude}&lon=${locationInfo.longitude}&APPID=7a075fa45323323813d5c357e54b030e`, { mode: 'cors' }).catch(errHandler);
+    response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${locationInfo.latitude}&lon=${locationInfo.longitude}&units=metric&APPID=7a075fa45323323813d5c357e54b030e`, { mode: 'cors' }).catch(errHandler);
   } else {
-    response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationInfo}&APPID=7a075fa45323323813d5c357e54b030e`, { mode: 'cors' }).catch(errHandler);
+    response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationInfo}+&units=metric&APPID=7a075fa45323323813d5c357e54b030e`, { mode: 'cors' }).catch(errHandler);
   }
   const weatherData = await response.json();
   if (weatherData && response.ok) {

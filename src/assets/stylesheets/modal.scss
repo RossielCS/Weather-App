@@ -3,8 +3,10 @@
 
 .modal {
   position: absolute;
+  width: 100vw;
+  height: 100vh;
   display: none;
-  z-index: 1;
+  z-index: 3;
   margin: auto;
   backdrop-filter: blur(4px);
 
@@ -50,4 +52,8 @@
       opacity: 1;
     }
   }
+}
+
+#error-msg {
+  display: none;
 }

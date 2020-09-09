@@ -1,4 +1,8 @@
 import { creator } from './helpers';
+import humLight from '../assets/images/humidity_light.png';
+import windSLight from '../assets/images/wind_speed_light.png';
+import humDark from '../assets/images/humidity_dark.png';
+import windSDark from '../assets/images/wind_speed_dark.png';
 import img1D from '../assets/images/01d.png';
 import img1N from '../assets/images/01n.png';
 import img2D from '../assets/images/02d.png';
@@ -48,6 +52,20 @@ function setBGImage(iconList, iconIndex) {
   const background = document.getElementById('bg-image');
   const icon = iconList[iconIndex];
   background.setAttribute('src', `${icon}`);
+  const bgColor = document.getElementById('content');
+  const iconWind = document.getElementById('weather-icon-wind');
+  const iconHum = document.getElementById('weather-icon-hum');
+  if (iconIndex.includes('d')) {
+    bgColor.style.backgroundColor = '#dff4ff';
+    bgColor.style.color = '#0a0607';
+    iconWind.setAttribute('src', `${windSDark}`);
+    iconHum.setAttribute('src', `${humDark}`);
+  } else {
+    bgColor.style.backgroundColor = '#0a0607';
+    bgColor.style.color = '#eeecec';
+    iconWind.setAttribute('src', `${windSLight}`);
+    iconHum.setAttribute('src', `${humLight}`);
+  }
 }
 
 export { createBGContainer, setBGImage, iconList };

@@ -9,8 +9,8 @@
   height: 100vh;
   width: 100vw;
   min-width: 920px;
-  color: $secondary-color;
-  background-color: $terciary-color-dark;
+  color: $terciary-color-dark;
+  background-color: $secondary-color-dark;
   font-family: 'Work Sans', sans-serif;
 }
 
@@ -73,7 +73,7 @@ main {
         border: none;
         border-top-right-radius: 6px;
         border-bottom-right-radius: 6px;
-        background-color: $terciary-color;
+        background-color: $quaternary-color-dark;
 
         &:hover {
           cursor: pointer;

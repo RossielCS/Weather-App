@@ -11,8 +11,12 @@
   height: 400px;
   padding: 20px;
   margin: 0 auto;
-  border-radius: 20px;
-  border: 1px solid $primary-color-dark;
+  border-radius: 20px; // 0 0 5px $primary-color-dark
+  border-right: 1px solid $primary-color-dark;
+  border-bottom: 1px solid $primary-color-dark;
+  // border: 1px solid $primary-color-dark;
+  box-shadow: $tertiary-color-dark 1px 1px 4px -1px inset;
+  background-image: linear-gradient(140deg, rgba(48, 48, 48, 0.699), rgba(15, 15, 15, 0.473));
 
   @include flex(column, space-around, space-around);
 

@@ -1,0 +1,65 @@
+@import 'variables';
+@import 'mixins';
+
+form {
+  z-index: 2;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  padding-left: 50px;
+  padding-top: 50px;
+
+  #search-container {
+    @include flex(row, flex-start, center);
+
+    input[type='text'] {
+      height: 30px;
+      padding-left: 10px;
+      width: 150px;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 400;
+      border: none;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+      background-color: $quaternary-color-dark;
+      box-shadow: $secondary-color-dark 1px 1px 4px -1px inset;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        color: #fff;
+      }
+    }
+
+    button {
+      height: 30px;
+      width: 50px;
+      border: none;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+      background-color: $primary-color-dark;
+
+      &:hover {
+        cursor: pointer;
+        background-color: #d6212160;
+      }
+    }
+  }
+
+  p {
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+
+  .radio-container {
+    div {
+      margin-bottom: 5px;
+
+      input {
+        vertical-align: text-top;
+        margin-right: 10px;
+      }
+    }
+  }
+}

@@ -4,17 +4,11 @@
 @import 'modal';
 @import 'display';
 
-/*
-$terciary-color-dark: #0a0607;
-$primary-color: #d72f30;
-$secondary-color: #eeecec;
-$terciary-color: #595757;
-*/
-
 #content {
   margin: auto;
   height: 100vh;
   width: 100vw;
+  min-width: 920px;
   color: $secondary-color;
   background-color: $terciary-color-dark;
   font-family: 'Work Sans', sans-serif;
@@ -64,6 +58,8 @@ main {
         padding-left: 10px;
         width: 150px;
         border: none;
+        border-top-left-radius: 6px;
+        border-bottom-left-radius: 6px;
         background-color: #fff;
 
         &:focus {
@@ -75,6 +71,8 @@ main {
         height: 30px;
         width: 50px;
         border: none;
+        border-top-right-radius: 6px;
+        border-bottom-right-radius: 6px;
         background-color: $terciary-color;
 
         &:hover {

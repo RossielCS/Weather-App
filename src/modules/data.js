@@ -34,7 +34,7 @@ async function getWeather(locationInfo) {
   if (locationInfo.latitude) {
     response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${locationInfo.latitude}&lon=${locationInfo.longitude}&units=metric&APPID=7a075fa45323323813d5c357e54b030e`, { mode: 'cors' }).catch(errHandler);
   } else {
-    response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationInfo}+&units=metric&APPID=7a075fa45323323813d5c357e54b030e`, { mode: 'cors' }).catch(errHandler);
+    response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${locationInfo}&APPID=7a075fa45323323813d5c357e54b030e`, { mode: 'cors' }).catch(errHandler);
   }
   const weatherData = await response.json();
   if (weatherData && response.ok) {
@@ -44,14 +44,14 @@ async function getWeather(locationInfo) {
 }
 
 function filterData(weatherData) {
-  const cityName = weatherData.name;
+  const { name } = weatherData;
   const { description, icon } = weatherData.weather[0];
-  const { temp, humidity } = weatherData.main;
-  const feelsLike = weatherData.main.feels_like;
-  const tempMin = weatherData.main.temp_min;
-  const tempMax = weatherData.main.temp_max;
+  const allTemp = [weatherData.main.temp, weatherData.main.feels_like,
+    weatherData.main.temp_min, weatherData.main.temp_max];
+  const [temp, feelsLike, tempMin, tempMax] = allTemp.map(x => Math.round(x));
+  const { humidity } = weatherData.main;
   const windSpeed = weatherData.wind.speed;
-  return [cityName, temp, feelsLike, tempMin, tempMax,
+  return [name, temp, feelsLike, tempMin, tempMax,
     description, icon, windSpeed, humidity];
 }
 

@@ -1,4 +1,6 @@
 import { creator } from './helpers';
+import humIcon from '../assets/images/humidity.png';
+import windSpeedIcon from '../assets/images/wind_speed.png';
 
 const symbols = {
   '01': 'K',
@@ -62,17 +64,19 @@ function addDescription(parent) {
 }
 
 function addWindAndHumidity(parent) {
-  const otherData = creator(parent, 'div', 'append');
-
-  const wind = creator(otherData, 'div', 'append');
-  const iconWind = creator(wind, 'i', 'append');
+  const wind = creator(parent, 'div', 'append');
+  const iconWind = creator(wind, 'img', 'append');
   iconWind.setAttribute('id', 'weather-icon-wind');
+  iconWind.setAttribute('src', `${windSpeedIcon}`);
+
   const textWind = creator(wind, 'p', 'append');
   textWind.setAttribute('id', 'weather-text-wind');
 
-  const humidity = creator(otherData, 'div', 'append');
-  const iconHum = creator(humidity, 'i', 'append');
+  const humidity = creator(parent, 'div', 'append');
+  const iconHum = creator(humidity, 'img', 'append');
   iconHum.setAttribute('id', 'weather-icon-hum');
+  iconHum.setAttribute('src', `${humIcon}`);
+
   const textHum = creator(humidity, 'p', 'append');
   textHum.setAttribute('id', 'weather-text-hum');
 }
@@ -85,8 +89,11 @@ function createWeatherDisplay(main) {
   cityName.setAttribute('id', 'city-name');
 
   addTemperature(weather);
-  addDescription(weather);
-  addWindAndHumidity(weather);
+
+  const otherInfo = creator(weather, 'div', 'append');
+  otherInfo.setAttribute('id', 'weather-other-container');
+  addDescription(otherInfo);
+  addWindAndHumidity(otherInfo);
   return weather;
 }
 

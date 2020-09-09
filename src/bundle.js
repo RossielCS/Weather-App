@@ -35,7 +35,7 @@ async function success(pos) {
 }
 
 async function error(err) {
-  const weatherData = await getWeather('London');
+  const weatherData = await getWeather('London+&units=metric');
   manageResponse(weatherData);
   return err;
 }

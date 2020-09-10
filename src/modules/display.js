@@ -6,16 +6,13 @@ const symbols = {
 };
 
 const setTempValues = (toggle, savedTempValues) => {
-  const formula = (c) => (c * (9 / 5)) + 32;
+  const formula = (c) => Math.round((c * (9 / 5)) + 32);
   let [temp, feelsLike, tempMin, tempMax] = '';
   if (toggle) {
-    [temp, feelsLike, tempMin, tempMax] = [
-      formula(savedTempValues[temp]), formula(savedTempValues[feelsLike]),
-      formula(savedTempValues[tempMin]), formula(savedTempValues[tempMax])];
+    [temp, feelsLike, tempMin, tempMax] = [...Object.values(savedTempValues)].map(x => formula(x));
   } else {
-    [temp, feelsLike, tempMin, tempMax] = { savedTempValues };
+    [temp, feelsLike, tempMin, tempMax] = [...Object.values(savedTempValues)];
   }
-
   document.getElementById('weather-temp-main').innerHTML = `${temp} ${symbols[toggle]}`;
 
   const tempMinMax = document.getElementById('weather-minmax').children;

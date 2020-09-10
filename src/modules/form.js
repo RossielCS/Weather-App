@@ -7,11 +7,6 @@ import {
 } from './data';
 import { setBGImage, iconList } from './background';
 
-const units = {
-  false: '&units=metric',
-  true: '&units=imperial',
-};
-
 const addCBToToggle = (button) => {
   button.addEventListener('click', () => {
     button.children[0].checked = !button.children[0].checked;
@@ -19,13 +14,13 @@ const addCBToToggle = (button) => {
   });
 };
 
-const addCBToSearchBtn = (button, main, units) => {
+const addCBToSearchBtn = (button, main) => {
   button.addEventListener('click', async (e) => {
     e.preventDefault();
     const inputs = document.getElementsByClassName('weather-input');
     const values = getInputsValues(inputs);
     if (values) {
-      const cityName = modifyInput(values[0], units[values[1]]);
+      const cityName = modifyInput(values[0]);
       const data = await getWeather(cityName);
       if (data) {
         const allData = filterData(data);
@@ -41,7 +36,7 @@ const addCBToSearchBtn = (button, main, units) => {
   });
 };
 
-const formSearch = (parent, units) => {
+const formSearch = (parent) => {
   const form = creator(parent, 'form', 'append');
 
   const searchContainer = creator(form, 'div', 'append');
@@ -57,7 +52,7 @@ const formSearch = (parent, units) => {
   const button = creator(searchContainer, 'button', 'append');
   button.setAttribute('type', 'submit');
   button.setAttribute('id', 'search-btn');
-  addCBToSearchBtn(button, parent, units);
+  addCBToSearchBtn(button, parent);
 
   const icon = creator(button, 'span', 'append');
   icon.setAttribute('class', 'material-icons');
@@ -84,4 +79,4 @@ const formSearch = (parent, units) => {
   return form;
 };
 
-export { formSearch, units };
+export default formSearch;

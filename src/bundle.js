@@ -6,12 +6,12 @@ import { filterData, getWeather, savedTempValues } from './modules/data';
 import {
   createWeatherDisplay, setTempValues, setOtherValues,
 } from './modules/display';
-import { formSearch, units } from './modules/form';
+import formSearch from './modules/form';
 import { createBGContainer, setBGImage, iconList } from './modules/background';
 
 const content = document.getElementById('content');
 const main = creator(content, 'main', 'append');
-formSearch(main, units);
+formSearch(main);
 createBGContainer(main);
 createWeatherDisplay(main);
 
@@ -33,6 +33,6 @@ const manageResponse = (weatherData) => {
 };
 
 const success = async (pos) => manageResponse(await getWeather(pos.coords));
-const error = async () => manageResponse(await getWeather('Tokyo+&units=metric'));
+const error = async () => manageResponse(await getWeather('Tokyo'));
 
 navigator.geolocation.getCurrentPosition(success, error, options);

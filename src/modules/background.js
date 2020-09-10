@@ -57,15 +57,17 @@ const setBGImage = (iconList, iconIndex) => {
   const iconWind = document.getElementById('weather-icon-wind');
   const iconHum = document.getElementById('weather-icon-hum');
   if (iconIndex.includes('d')) {
-    [bgColor, weatherCont, weatherTempMain, searchCont, toggle].forEach(x => {
+    [bgColor, weatherCont, weatherTempMain, searchCont].forEach(x => {
       x.setAttribute('class', 'light-version');
     });
+    toggle.setAttribute('class', 'toggle light-version');
     iconWind.setAttribute('src', `${windSDark}`);
     iconHum.setAttribute('src', `${humDark}`);
   } else {
     [bgColor, weatherCont, weatherTempMain, searchCont].forEach(x => {
       x.setAttribute('class', 'dark-version');
     });
+    toggle.setAttribute('class', 'toggle dark-version');
     iconWind.setAttribute('src', `${windSLight}`);
     iconHum.setAttribute('src', `${humLight}`);
   }

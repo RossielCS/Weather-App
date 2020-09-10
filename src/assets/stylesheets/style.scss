@@ -9,10 +9,18 @@
   margin: auto;
   height: 100vh;
   width: 100vw;
-  min-width: 920px;
+  min-width: 920px;  
+  font-family: 'Work Sans', sans-serif;
+}
+
+.dark-version {
   color: $tertiary-color-dark;
   background-color: $secondary-color-dark;
-  font-family: 'Work Sans', sans-serif;
+}
+
+.light-version {
+  color: $tertiary-color-dark;
+  background-color: $secondary-color-dark;
 }
 
 .material-icons {

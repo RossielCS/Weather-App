@@ -20,15 +20,9 @@ form {
       border: none;
       border-top-left-radius: 6px;
       border-bottom-left-radius: 6px;
-      background-color: $quaternary-color-dark;
-      box-shadow: $secondary-color-dark 1px 1px 4px -1px inset;
 
       &:focus {
         outline: none;
-      }
-
-      &::placeholder {
-        color: #fff;
       }
     }
 
@@ -38,11 +32,11 @@ form {
       border: none;
       border-top-right-radius: 6px;
       border-bottom-right-radius: 6px;
-      background-color: $primary-color-dark;
 
       &:hover {
         cursor: pointer;
-        background-color: #d6212160;
+        background-image: none;
+        box-shadow: none;
       }
     }
   }
@@ -59,6 +53,80 @@ form {
       input {
         vertical-align: text-top;
         margin-right: 10px;
+      }
+    }
+  }
+}
+
+.dark-version {
+  #weather-container {
+    border-right: 1px solid $primary-color-dark;
+    border-bottom: 1px solid $primary-color-dark;
+    box-shadow: $tertiary-color-dark 1px 1px 4px -1px inset;
+    background-image: linear-gradient(140deg, rgba(48, 48, 48, 0.699), rgba(15, 15, 15, 0.473));
+  }
+
+  #weather-temp-main {
+    border-right: 1px solid $primary-color-dark;
+  }
+
+  #search-container {
+    .weather-input {
+      background-color: $quaternary-color-dark;
+      box-shadow: $secondary-color-dark 1px 1px 4px -1px inset;
+
+      &:focus {
+        color: #fff;
+      }
+
+      &::placeholder {
+        color: #fff;
+      }
+    }
+
+    #search-btn {
+      background-image: linear-gradient(140deg, #6d0b0b, #b91d1d);
+      box-shadow: #e71717 2px 2px 4px -1px inset;
+
+      &:hover {
+        background-color: #6d0b0b;
+      }
+    }
+  }
+}
+
+.light-version {
+  #weather-container {
+    border-right: 1px solid $primary-color-dark;
+    border-bottom: 1px solid $primary-color-dark;
+    box-shadow: $tertiary-color-dark 1px 1px 4px -1px inset;
+    background-image: linear-gradient(140deg, rgba(48, 48, 48, 0.699), rgba(15, 15, 15, 0.473));
+  }
+
+  #weather-temp-main {
+    border-right: 1px solid $primary-color-dark;
+  }
+
+  #search-container {
+    .weather-input {
+      background-color: $quaternary-color-dark;
+      box-shadow: $secondary-color-dark 1px 1px 4px -1px inset;
+
+      &:focus {
+        color: #fff;
+      }
+
+      &::placeholder {
+        color: #fff;
+      }
+    }
+
+    #search-btn {
+      background-image: linear-gradient(140deg, #6d0b0b, #b91d1d);
+      box-shadow: #e71717 2px 2px 4px -1px inset;
+
+      &:hover {
+        background-color: #6d0b0b;
       }
     }
   }

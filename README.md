@@ -47,7 +47,7 @@ To run the project:
 `npm run start`
 
 ## :gem:  Features
-- It displays the temperature in three different formats.
+- It displays the temperature in two different formats.
 - The style colors change depending on if it is day or night.
 - It shows a message if the user tries to make a search with the input field empty or if it could not find the city.
 

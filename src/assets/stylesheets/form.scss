@@ -38,6 +38,10 @@ form {
         background-image: none;
         box-shadow: none;
       }
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 

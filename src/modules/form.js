@@ -85,11 +85,17 @@ const formSearch = (parent, units) => {
   toggleContainer.setAttribute('class', 'radio-container');
   const toggle = creator(toggleContainer, 'input', 'append');
   toggle.setAttribute('id', 'switch');
+  toggle.setAttribute('class', 'checkbox');
   toggle.setAttribute('type', 'checkbox');
   const toggleLabel = creator(toggleContainer, 'label', 'append');
   toggleLabel.setAttribute('for', 'switch');
-  creator(toggleLabel, 'p', 'append').innerHTML = '°C';
-  creator(toggleLabel, 'p', 'append').innerHTML = '°F';
+  toggleLabel.setAttribute('class', 'toggle');
+  const celsius = creator(toggleLabel, 'p', 'append');
+  celsius.setAttribute('id', 'toggle-celsius');
+  celsius.innerHTML = '°C';
+  const fahrenheit = creator(toggleLabel, 'p', 'append');
+  fahrenheit.innerHTML = '°F';
+  fahrenheit.setAttribute('id', 'toggle-fahrenheit');
   /*
   for (let i = 0; i < radioButtons.length; i += 1) {
     createRadioBtn(radioContainer, radioButtons, i);

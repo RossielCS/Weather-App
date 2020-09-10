@@ -3,6 +3,7 @@ import { setValues, symbols } from './display';
 import {
   getInputsValues, modifyInput, getWeather, filterData,
 } from './data';
+import { setBGImage, iconList } from './background';
 
 const radioButtons = [
   ['kelvin', '01'], ['celsius', '02'], ['fahrenheit', '03'],
@@ -42,6 +43,7 @@ function addCBToSearchBtn(button, main, units) {
       const data = await getWeather(cityName);
       if (data) {
         const allData = filterData(data);
+        setBGImage(iconList, allData[6]);
         setValues(symbols, ...allData);
       } else {
         createModal(main);

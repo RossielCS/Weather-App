@@ -4,6 +4,9 @@ Here I applied DOM manipulation by dynamically rendering the website using JavaS
 
 ## Screenshot
 <img src="./src/assets/images/screenshot_01.png" alt="screenshot" width="800"/>
+<img src="./src/assets/images/screenshot_02.png" alt="screenshot" width="800"/>
+<img src="./src/assets/images/screenshot_03.png" alt="screenshot" width="800"/>
+<img src="./src/assets/images/screenshot_04.png" alt="screenshot" width="800"/>
 
 ## Live Demo
 
@@ -45,8 +48,8 @@ To run the project:
 
 ## :gem:  Features
 - It displays the temperature in three different formats.
-- The style colors change depending if it is day or night.
-- It displays a message if the user tries to make search with the input field empty or if it could not find the city.
+- The style colors change depending on if it is day or night.
+- It shows a message if the user tries to make a search with the input field empty or if it could not find the city.
 
 ## :woman:  Author
 

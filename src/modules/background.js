@@ -59,7 +59,7 @@ function setBGImage(iconList, iconIndex) {
 
   const iconWind = document.getElementById('weather-icon-wind');
   const iconHum = document.getElementById('weather-icon-hum');
-  if (iconIndex.includes('n')) {
+  if (iconIndex.includes('d')) {
     [bgColor, weatherCont, weatherTempMain, searchCont].forEach(x => {
       x.setAttribute('class', 'light-version');
     });

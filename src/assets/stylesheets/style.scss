@@ -42,7 +42,7 @@ main {
   max-width: 1024px;
   display: grid;
   grid-template-columns: 280px 4fr 280px;
-  grid-template-rows: 1fr 0.5fr minmax(60vh, 80vh);
+  grid-template-rows: 220px minmax(60vh, 80vh) 170px;
 
   #bg-image {
     position: absolute;

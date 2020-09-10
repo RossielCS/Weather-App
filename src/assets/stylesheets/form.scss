@@ -53,6 +53,7 @@ form {
 
   .toggle-container {
     margin-top: 10px;
+    width: fit-content;
 
     .toggle {
       position: relative;
@@ -93,6 +94,10 @@ form {
       #toggle-fahrenheit {
         padding-right: 5px;
         text-align: right;
+      }
+
+      &:hover {
+        cursor: pointer;
       }
     }
 

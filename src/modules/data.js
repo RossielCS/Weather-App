@@ -4,8 +4,9 @@ const getInputsValues = (inputs) => {
   for (let i = 0; i < allInputs.length; i += 1) {
     if (allInputs[i].type === 'text' && allInputs[i].value === '') return false;
 
-    if (allInputs[i].type === 'radio') {
-      if (allInputs[i].checked) values.push(allInputs[i].value);
+    if (allInputs[i].type === 'checkbox') {
+      console.log(allInputs[i].checked);
+      values.push(allInputs[i].checked);
     } else {
       values.push(allInputs[i].value);
     }

@@ -14,28 +14,16 @@ const radioButtons = [
 */
 
 const units = {
-  '01': '&units=metric',
-  '03': '&units=imperial',
+  false: '&units=metric',
+  true: '&units=imperial',
 };
-/*
-const createRadioBtn = (radioContainer, radioButtons, i) => {
-  const radioBox = creator(radioContainer, 'div', 'append');
 
-  const radio = creator(radioBox, 'input', 'append');
-  radio.setAttribute('type', 'radio');
-  radio.setAttribute('value', `${radioButtons[i][1]}`);
-  radio.setAttribute('id', `${radioButtons[i][0]}`);
-  radio.setAttribute('class', 'weather-input radio-input');
-  radio.setAttribute('name', 'units');
-  const label = creator(radioBox, 'label', 'append');
-  label.setAttribute('for', `${radioButtons[i][0]}`);
-  label.innerHTML = `${radioButtons[i][0].charAt(0)
-    .toUpperCase()
-    .concat(radioButtons[i][0]
-      .slice(1))}`;
-  if (i === 1) radio.checked = true;
+const addCBToToggle = (button) => {
+  button.addEventListener('click', () => {
+    button.children[0].checked = !button.children[0].checked;
+  });
 };
-*/
+
 const addCBToSearchBtn = (button, main, units) => {
   button.addEventListener('click', async (e) => {
     e.preventDefault();
@@ -79,14 +67,15 @@ const formSearch = (parent, units) => {
   icon.setAttribute('class', 'material-icons');
   icon.innerHTML = 'search';
 
-  /* const priorityTitle = creator(form, 'p', 'append');
-  priorityTitle.innerHTML = 'Select Unit Format:'; */
   const toggleContainer = creator(form, 'div', 'append');
   toggleContainer.setAttribute('class', 'toggle-container');
+  addCBToToggle(toggleContainer);
+
   const toggle = creator(toggleContainer, 'input', 'append');
   toggle.setAttribute('id', 'switch');
-  toggle.setAttribute('class', 'checkbox');
+  toggle.setAttribute('class', 'checkbox weather-input');
   toggle.setAttribute('type', 'checkbox');
+
   const toggleLabel = creator(toggleContainer, 'label', 'append');
   toggleLabel.setAttribute('for', 'switch');
   toggleLabel.setAttribute('class', 'toggle');
@@ -96,11 +85,6 @@ const formSearch = (parent, units) => {
   const fahrenheit = creator(toggleLabel, 'p', 'append');
   fahrenheit.innerHTML = '°F';
   fahrenheit.setAttribute('id', 'toggle-fahrenheit');
-  /*
-  for (let i = 0; i < radioButtons.length; i += 1) {
-    createRadioBtn(radioContainer, radioButtons, i);
-  }
-  */
   return form;
 };
 

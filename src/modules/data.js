@@ -5,6 +5,9 @@ const savedTempValues = {
   tempMax: '',
 };
 
+const changeToF = (savedTempValues) => [
+  ...Object.values(savedTempValues)].map(x => Math.round((x * (9 / 5)) + 32));
+
 const getInputsValues = (inputs) => {
   const allInputs = [...inputs];
   const values = [];
@@ -55,5 +58,5 @@ const filterData = (weatherData) => {
 };
 
 export {
-  getInputsValues, modifyInput, getWeather, filterData, savedTempValues,
+  getInputsValues, modifyInput, getWeather, filterData, changeToF, savedTempValues,
 };

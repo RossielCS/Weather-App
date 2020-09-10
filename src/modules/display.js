@@ -1,4 +1,5 @@
 import { creator } from './helpers';
+import { changeToF } from './data';
 
 const symbols = {
   false: '°C',
@@ -6,10 +7,10 @@ const symbols = {
 };
 
 const setTempValues = (toggle, savedTempValues) => {
-  const formula = (c) => Math.round((c * (9 / 5)) + 32);
+  const valuesF = changeToF(savedTempValues);
   let [temp, feelsLike, tempMin, tempMax] = '';
   if (toggle) {
-    [temp, feelsLike, tempMin, tempMax] = [...Object.values(savedTempValues)].map(x => formula(x));
+    [temp, feelsLike, tempMin, tempMax] = [...valuesF];
   } else {
     [temp, feelsLike, tempMin, tempMax] = [...Object.values(savedTempValues)];
   }

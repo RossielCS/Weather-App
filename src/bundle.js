@@ -23,7 +23,8 @@ function manageResponse(weatherData) {
     setBGImage(iconList, allData[6]);
     setValues(symbols, ...allData);
   } else {
-    createModal(main);
+    const modalContent = createModal(main);
+    modalContent.innerHTML = 'The city provided could not be found.';
     document.getElementById('error-msg').style.display = 'block';
   }
 }

@@ -12,7 +12,7 @@ function creator(parent, newElement, position) {
 
 function addCBToModalBtn(button, modalWindow) {
   button.addEventListener('click', () => {
-    modalWindow.style.display = 'none';
+    modalWindow.remove();
   });
 }
 
@@ -30,8 +30,8 @@ function createModal(main) {
   addCBToModalBtn(closeWinBtn, modalWindow);
 
   const message = creator(modal, 'h3', 'append');
-  message.innerHTML = 'The city provided could not be found.';
-  return modalWindow;
+
+  return message;
 }
 
 export { creator, createModal };

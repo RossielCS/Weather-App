@@ -46,12 +46,13 @@ function addCBToSearchBtn(button, main, units) {
         setBGImage(iconList, allData[6]);
         setValues(symbols, ...allData);
       } else {
-        createModal(main);
+        const modalContent = createModal(main);
+        modalContent.innerHTML = 'The city provided could not be found.';
         document.getElementById('error-msg').style.display = 'block';
       }
     } else {
-      createModal(main);
-      document.getElementsByClassName('modal-content')[0].children[1].innerHTML = 'Please fill in required field.';
+      const modalContent = createModal(main);
+      modalContent.innerHTML = 'Fill in required field.';
       document.getElementById('error-msg').style.display = 'block';
     }
   });

@@ -1,3 +1,10 @@
+const savedTempValues = {
+  temp: '',
+  feelsLike: '',
+  tempMin: '',
+  tempMax: '',
+};
+
 const getInputsValues = (inputs) => {
   const allInputs = [...inputs];
   const values = [];
@@ -5,7 +12,6 @@ const getInputsValues = (inputs) => {
     if (allInputs[i].type === 'text' && allInputs[i].value === '') return false;
 
     if (allInputs[i].type === 'checkbox') {
-      console.log(allInputs[i].checked);
       values.push(allInputs[i].checked);
     } else {
       values.push(allInputs[i].value);
@@ -42,13 +48,13 @@ const filterData = (weatherData) => {
   const { description, icon } = weatherData.weather[0];
   const allTemp = [weatherData.main.temp, weatherData.main.feels_like,
     weatherData.main.temp_min, weatherData.main.temp_max];
-  const [temp, feelsLike, tempMin, tempMax] = allTemp.map(x => Math.round(x));
+  [savedTempValues.temp, savedTempValues.feelsLike,
+    savedTempValues.tempMin, savedTempValues.tempMax] = allTemp.map(x => Math.round(x));
   const { humidity } = weatherData.main;
   const windSpeed = weatherData.wind.speed;
-  return [name, temp, feelsLike, tempMin, tempMax,
-    description, icon, windSpeed, humidity];
+  return [name, description, icon, windSpeed, humidity];
 };
 
 export {
-  getInputsValues, modifyInput, getWeather, filterData,
+  getInputsValues, modifyInput, getWeather, filterData, savedTempValues,
 };

@@ -2,8 +2,10 @@ import './assets/stylesheets/style.scss';
 import {
   creator, createModal, setModalDisplay, message,
 } from './modules/helpers';
-import { filterData, getWeather } from './modules/data';
-import { createWeatherDisplay, setValues, symbols } from './modules/display';
+import { filterData, getWeather, savedTempValues } from './modules/data';
+import {
+  createWeatherDisplay, setTempValues, setOtherValues,
+} from './modules/display';
 import { formSearch, units } from './modules/form';
 import { createBGContainer, setBGImage, iconList } from './modules/background';
 
@@ -22,8 +24,9 @@ const options = {
 const manageResponse = (weatherData) => {
   if (weatherData) {
     const allData = filterData(weatherData);
-    setBGImage(iconList, allData[6]);
-    setValues(symbols, ...allData);
+    setBGImage(iconList, allData[2]);
+    setTempValues(false, savedTempValues);
+    setOtherValues(...allData);
   } else {
     setModalDisplay(createModal(main, '02', message));
   }

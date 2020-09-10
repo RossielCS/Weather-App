@@ -1,29 +1,34 @@
 import { creator } from './helpers';
 
 const symbols = {
-  '01': 'K',
-  '02': '°C',
-  '03': '°F',
+  false: '°C',
+  true: '°F',
 };
 
-const setValues = (symbols, ...params) => {
-  const [cityName, temp, feelsLike, tempMin, tempMax,
-    description, icon, windSpeed, humidity] = [...params];
+const setTempValues = (toggle, savedTempValues) => {
+  const formula = (c) => (c * (9 / 5)) + 32;
+  let [temp, feelsLike, tempMin, tempMax] = '';
+  if (toggle) {
+    [temp, feelsLike, tempMin, tempMax] = [
+      formula(savedTempValues[temp]), formula(savedTempValues[feelsLike]),
+      formula(savedTempValues[tempMin]), formula(savedTempValues[tempMax])];
+  } else {
+    [temp, feelsLike, tempMin, tempMax] = { savedTempValues };
+  }
 
-  document.getElementById('city-name').innerHTML = `${cityName}`;
-  const tempMain = document.getElementById('weather-temp-main');
-  const radioInputs = document.getElementsByClassName('radio-input');
-  [...radioInputs].forEach(x => {
-    if (x.checked) {
-      tempMain.innerHTML = `${temp} ${symbols[x.value]}`;
-    }
-  });
+  document.getElementById('weather-temp-main').innerHTML = `${temp} ${symbols[toggle]}`;
 
   const tempMinMax = document.getElementById('weather-minmax').children;
   tempMinMax[0].innerHTML = `${tempMin}`;
   tempMinMax[1].innerHTML = `${tempMax}`;
 
   document.getElementById('weather-feels-like').innerHTML = `Real Feel ${feelsLike}`;
+};
+
+const setOtherValues = (...params) => {
+  const [cityName, description, icon, windSpeed, humidity] = [...params];
+
+  document.getElementById('city-name').innerHTML = `${cityName}`;
   document.getElementById('weather-icon-descr').setAttribute('src', `http://openweathermap.org/img/wn/${icon}.png`);
   document.getElementById('weather-text-descr').innerHTML = `${description}`
     .split(' ')
@@ -93,4 +98,6 @@ const createWeatherDisplay = (main) => {
   return weather;
 };
 
-export { createWeatherDisplay, setValues, symbols };
+export {
+  createWeatherDisplay, setTempValues, setOtherValues, symbols,
+};

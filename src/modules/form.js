@@ -1,17 +1,11 @@
 import {
   creator, createModal, setModalDisplay, message,
 } from './helpers';
-import { setValues, symbols } from './display';
+import { setTempValues, setOtherValues } from './display';
 import {
-  getInputsValues, modifyInput, getWeather, filterData,
+  getInputsValues, modifyInput, getWeather, filterData, savedTempValues,
 } from './data';
 import { setBGImage, iconList } from './background';
-
-/*
-const radioButtons = [
-  ['kelvin', '01'], ['celsius', '02'], ['fahrenheit', '03'],
-];
-*/
 
 const units = {
   false: '&units=metric',
@@ -21,6 +15,7 @@ const units = {
 const addCBToToggle = (button) => {
   button.addEventListener('click', () => {
     button.children[0].checked = !button.children[0].checked;
+    setTempValues(button.children[0].checked, savedTempValues);
   });
 };
 
@@ -34,8 +29,9 @@ const addCBToSearchBtn = (button, main, units) => {
       const data = await getWeather(cityName);
       if (data) {
         const allData = filterData(data);
-        setBGImage(iconList, allData[6]);
-        setValues(symbols, ...allData);
+        setBGImage(iconList, allData[2]);
+        setTempValues(values[1], savedTempValues);
+        setOtherValues(...allData);
       } else {
         setModalDisplay(createModal(main, '02', message));
       }

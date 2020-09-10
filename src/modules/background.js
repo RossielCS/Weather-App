@@ -52,11 +52,12 @@ const setBGImage = (iconList, iconIndex) => {
   const weatherCont = document.getElementById('weather-container');
   const weatherTempMain = document.getElementById('weather-temp-main');
   const searchCont = document.getElementById('search-container');
+  const toggle = document.getElementsByClassName('toggle')[0];
 
   const iconWind = document.getElementById('weather-icon-wind');
   const iconHum = document.getElementById('weather-icon-hum');
   if (iconIndex.includes('d')) {
-    [bgColor, weatherCont, weatherTempMain, searchCont].forEach(x => {
+    [bgColor, weatherCont, weatherTempMain, searchCont, toggle].forEach(x => {
       x.setAttribute('class', 'light-version');
     });
     iconWind.setAttribute('src', `${windSDark}`);

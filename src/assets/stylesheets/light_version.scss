@@ -39,4 +39,15 @@
       }
     }
   }
+
+  .toggle {
+    background-color: $primary-color-dark;
+    box-shadow: 1px 1px 4px #5a0909 inset;
+    border: 2px solid $quaternary-color-dark;
+
+    &::after {
+      background-image: linear-gradient(140deg, rgb(58, 58, 58), rgb(143, 143, 143));
+      box-shadow: 0 0 3px 0 rgba(255, 255, 255, 0.445) inset;
+    }
+  }
 }

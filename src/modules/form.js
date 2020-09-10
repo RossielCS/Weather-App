@@ -82,7 +82,7 @@ const formSearch = (parent, units) => {
   /* const priorityTitle = creator(form, 'p', 'append');
   priorityTitle.innerHTML = 'Select Unit Format:'; */
   const toggleContainer = creator(form, 'div', 'append');
-  toggleContainer.setAttribute('class', 'radio-container');
+  toggleContainer.setAttribute('class', 'toggle-container');
   const toggle = creator(toggleContainer, 'input', 'append');
   toggle.setAttribute('id', 'switch');
   toggle.setAttribute('class', 'checkbox');

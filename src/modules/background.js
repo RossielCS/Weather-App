@@ -59,20 +59,16 @@ function setBGImage(iconList, iconIndex) {
 
   const iconWind = document.getElementById('weather-icon-wind');
   const iconHum = document.getElementById('weather-icon-hum');
-  if (iconIndex.includes('d')) {
+  if (iconIndex.includes('n')) {
     [bgColor, weatherCont, weatherTempMain, searchCont].forEach(x => {
       x.setAttribute('class', 'light-version');
     });
-    bgColor.style.backgroundColor = '#dafaff';
-    bgColor.style.color = '#4e4e4e';
     iconWind.setAttribute('src', `${windSDark}`);
     iconHum.setAttribute('src', `${humDark}`);
   } else {
     [bgColor, weatherCont, weatherTempMain, searchCont].forEach(x => {
       x.setAttribute('class', 'dark-version');
     });
-    bgColor.style.backgroundColor = '#0a0607';
-    bgColor.style.color = '#eeecec';
     iconWind.setAttribute('src', `${windSLight}`);
     iconHum.setAttribute('src', `${humLight}`);
   }

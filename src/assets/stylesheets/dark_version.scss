@@ -1,10 +1,8 @@
 @import 'variables';
 
 .dark-version {
-  #content {
-    color: $tertiary-color-dark;
-    background-color: $secondary-color-dark;
-  }
+  color: $tertiary-color-dark;
+  background-color: $secondary-color-dark;
 
   #weather-container {
     border-right: 1px solid $primary-color-dark;
@@ -15,6 +13,7 @@
 
   #weather-temp-main {
     border-right: 1px solid $primary-color-dark;
+    background-color: transparent;
   }
 
   #search-container {

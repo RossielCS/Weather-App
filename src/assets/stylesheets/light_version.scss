@@ -1,10 +1,8 @@
 @import 'variables';
 
 .light-version {
-  #content {
-    color: $secondary-color-light;
-    background-color: $tertiary-color-dark;
-  }
+  color: $quaternary-color-dark;
+  background-color: $secondary-color-light;
 
   #weather-container {
     border-right: 1px solid rgb(233, 233, 233);
@@ -15,6 +13,7 @@
 
   #weather-temp-main {
     border-right: 1.5px solid $primary-color-light;
+    background-color: transparent;
   }
 
   #search-container {

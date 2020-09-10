@@ -65,7 +65,6 @@ function addWindAndHumidity(parent) {
   const wind = creator(parent, 'div', 'append');
   const iconWind = creator(wind, 'img', 'append');
   iconWind.setAttribute('id', 'weather-icon-wind');
-  // iconWind.setAttribute('src', `${windSpeedIcon}`);
 
   const textWind = creator(wind, 'p', 'append');
   textWind.setAttribute('id', 'weather-text-wind');
@@ -73,7 +72,6 @@ function addWindAndHumidity(parent) {
   const humidity = creator(parent, 'div', 'append');
   const iconHum = creator(humidity, 'img', 'append');
   iconHum.setAttribute('id', 'weather-icon-hum');
-  // iconHum.setAttribute('src', `${humIcon}`);
 
   const textHum = creator(humidity, 'p', 'append');
   textHum.setAttribute('id', 'weather-text-hum');

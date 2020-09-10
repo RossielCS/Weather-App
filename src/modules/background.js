@@ -50,19 +50,25 @@ function createBGContainer(main) {
 
 function setBGImage(iconList, iconIndex) {
   const background = document.getElementById('bg-image');
-  const icon = iconList[iconIndex];
-  background.setAttribute('src', `${icon}`);
+  background.setAttribute('src', `${iconList[iconIndex]}`);
+
   const bgColor = document.getElementById('content');
+  const weatherCont = document.getElementById('weather-container');
+  const weatherTempMain = document.getElementById('weather-temp-main');
+  const searchCont = document.getElementById('search-container');
+
   const iconWind = document.getElementById('weather-icon-wind');
   const iconHum = document.getElementById('weather-icon-hum');
   if (iconIndex.includes('d')) {
-    bgColor.style.backgroundColor = '#dff4ff';
-    bgColor.style.color = '#0a0607';
+    [bgColor, weatherCont, weatherTempMain, searchCont].forEach(x => {
+      x.setAttribute('class', 'light-version');
+    });
     iconWind.setAttribute('src', `${windSDark}`);
     iconHum.setAttribute('src', `${humDark}`);
   } else {
-    bgColor.style.backgroundColor = '#0a0607';
-    bgColor.style.color = '#eeecec';
+    [bgColor, weatherCont, weatherTempMain, searchCont].forEach(x => {
+      x.setAttribute('class', 'dark-version');
+    });
     iconWind.setAttribute('src', `${windSLight}`);
     iconHum.setAttribute('src', `${humLight}`);
   }

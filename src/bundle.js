@@ -1,5 +1,7 @@
 import './assets/stylesheets/style.scss';
-import { creator, createModal } from './modules/helpers';
+import {
+  creator, createModal, setModalDisplay, message,
+} from './modules/helpers';
 import { filterData, getWeather } from './modules/data';
 import { createWeatherDisplay, setValues, symbols } from './modules/display';
 import { formSearch, units } from './modules/form';
@@ -17,29 +19,17 @@ const options = {
   maximumAge: 0,
 };
 
-function manageResponse(weatherData) {
+const manageResponse = (weatherData) => {
   if (weatherData) {
     const allData = filterData(weatherData);
     setBGImage(iconList, allData[6]);
     setValues(symbols, ...allData);
   } else {
-    const modalContent = createModal(main);
-    modalContent.innerHTML = 'The city provided could not be found.';
-    document.getElementById('error-msg').style.display = 'block';
+    setModalDisplay(createModal(main, '02', message));
   }
-}
+};
 
-async function success(pos) {
-  const crd = pos.coords;
-  const weatherData = await getWeather(crd);
-  manageResponse(weatherData);
-}
-
-async function error(err) {
-  const weatherData = await getWeather('Tokyo+&units=metric');
-  manageResponse(weatherData);
-  return err;
-}
-
+const success = async (pos) => manageResponse(await getWeather(pos.coords));
+const error = async () => manageResponse(await getWeather('Tokyo+&units=metric'));
 
 navigator.geolocation.getCurrentPosition(success, error, options);

@@ -1,6 +1,11 @@
 import closeButton from '../assets/images/close_window.png';
 
-function creator(parent, newElement, position) {
+const message = {
+  '01': 'Fill in required field.',
+  '02': 'The city provided could not be found.',
+};
+
+const creator = (parent, newElement, position) => {
   const child = document.createElement(`${newElement}`);
   if (position === 'append') {
     parent.appendChild(child);
@@ -8,15 +13,15 @@ function creator(parent, newElement, position) {
     parent.insertBefore(child, position);
   }
   return child;
-}
+};
 
-function addCBToModalBtn(button, modalWindow) {
+const addCBToModalBtn = (button, modalWindow) => {
   button.addEventListener('click', () => {
     modalWindow.remove();
   });
-}
+};
 
-function createModal(main) {
+const createModal = (main, option, message) => {
   const modalWindow = creator(main, 'div', 'append');
   modalWindow.setAttribute('class', 'modal');
   modalWindow.setAttribute('id', 'error-msg');
@@ -29,9 +34,16 @@ function createModal(main) {
   closeWinBtn.style.backgroundImage = `url('${closeButton}')`;
   addCBToModalBtn(closeWinBtn, modalWindow);
 
-  const message = creator(modal, 'h3', 'append');
+  const text = creator(modal, 'h3', 'append');
+  text.innerHTML = `${message[option]}`;
 
-  return message;
-}
+  return modalWindow;
+};
 
-export { creator, createModal };
+const setModalDisplay = modal => {
+  modal.style.display = 'block';
+};
+
+export {
+  creator, createModal, setModalDisplay, message,
+};

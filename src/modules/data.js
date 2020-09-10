@@ -1,4 +1,4 @@
-function getInputsValues(inputs) {
+const getInputsValues = (inputs) => {
   const allInputs = [...inputs];
   const values = [];
   for (let i = 0; i < allInputs.length; i += 1) {
@@ -11,25 +11,18 @@ function getInputsValues(inputs) {
     }
   }
   return values;
-}
+};
 
-function modifyInput(input, units) {
-  return input.replace(/\W{1,}/g, ' ')
-    .toLowerCase()
-    .split(' ')
-    .map(x => x.charAt(0).toUpperCase() + x.slice(1))
-    .join('+')
-    .concat(units);
-}
+const modifyInput = (input, units) => input.replace(/\W{1,}/g, ' ')
+  .toLowerCase()
+  .split(' ')
+  .map(x => x.charAt(0).toUpperCase() + x.slice(1))
+  .join('+')
+  .concat(units);
 
-function errHandler() {
-  const result = new Response(
-    JSON.stringify({ message: 'City not found.' }),
-  );
-  return result;
-}
+const errHandler = () => new Response(JSON.stringify({ message: 'City not found.' }));
 
-async function getWeather(locationInfo) {
+const getWeather = async (locationInfo) => {
   let response = '';
   if (locationInfo.latitude) {
     response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${locationInfo.latitude}&lon=${locationInfo.longitude}&units=metric&APPID=7a075fa45323323813d5c357e54b030e`, { mode: 'cors' }).catch(errHandler);
@@ -41,9 +34,9 @@ async function getWeather(locationInfo) {
     return weatherData;
   }
   return false;
-}
+};
 
-function filterData(weatherData) {
+const filterData = (weatherData) => {
   const { name } = weatherData;
   const { description, icon } = weatherData.weather[0];
   const allTemp = [weatherData.main.temp, weatherData.main.feels_like,
@@ -53,7 +46,7 @@ function filterData(weatherData) {
   const windSpeed = weatherData.wind.speed;
   return [name, temp, feelsLike, tempMin, tempMax,
     description, icon, windSpeed, humidity];
-}
+};
 
 export {
   getInputsValues, modifyInput, getWeather, filterData,

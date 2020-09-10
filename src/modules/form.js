@@ -1,21 +1,24 @@
-import { creator, createModal } from './helpers';
+import {
+  creator, createModal, setModalDisplay, message,
+} from './helpers';
 import { setValues, symbols } from './display';
 import {
   getInputsValues, modifyInput, getWeather, filterData,
 } from './data';
 import { setBGImage, iconList } from './background';
 
+/*
 const radioButtons = [
   ['kelvin', '01'], ['celsius', '02'], ['fahrenheit', '03'],
 ];
+*/
 
 const units = {
-  '01': '',
-  '02': '&units=metric',
+  '01': '&units=metric',
   '03': '&units=imperial',
 };
-
-function createRadioBtn(radioContainer, radioButtons, i) {
+/*
+const createRadioBtn = (radioContainer, radioButtons, i) => {
   const radioBox = creator(radioContainer, 'div', 'append');
 
   const radio = creator(radioBox, 'input', 'append');
@@ -31,9 +34,9 @@ function createRadioBtn(radioContainer, radioButtons, i) {
     .concat(radioButtons[i][0]
       .slice(1))}`;
   if (i === 1) radio.checked = true;
-}
-
-function addCBToSearchBtn(button, main, units) {
+};
+*/
+const addCBToSearchBtn = (button, main, units) => {
   button.addEventListener('click', async (e) => {
     e.preventDefault();
     const inputs = document.getElementsByClassName('weather-input');
@@ -46,19 +49,15 @@ function addCBToSearchBtn(button, main, units) {
         setBGImage(iconList, allData[6]);
         setValues(symbols, ...allData);
       } else {
-        const modalContent = createModal(main);
-        modalContent.innerHTML = 'The city provided could not be found.';
-        document.getElementById('error-msg').style.display = 'block';
+        setModalDisplay(createModal(main, '02', message));
       }
     } else {
-      const modalContent = createModal(main);
-      modalContent.innerHTML = 'Fill in required field.';
-      document.getElementById('error-msg').style.display = 'block';
+      setModalDisplay(createModal(main, '01', message));
     }
   });
-}
+};
 
-function formSearch(parent, units) {
+const formSearch = (parent, units) => {
   const form = creator(parent, 'form', 'append');
 
   const searchContainer = creator(form, 'div', 'append');
@@ -80,16 +79,23 @@ function formSearch(parent, units) {
   icon.setAttribute('class', 'material-icons');
   icon.innerHTML = 'search';
 
-  const priorityTitle = creator(form, 'p', 'append');
-  priorityTitle.innerHTML = 'Select Unit Format:';
-  const radioContainer = creator(form, 'div', 'append');
-  radioContainer.setAttribute('class', 'radio-container');
-
+  /* const priorityTitle = creator(form, 'p', 'append');
+  priorityTitle.innerHTML = 'Select Unit Format:'; */
+  const toggleContainer = creator(form, 'div', 'append');
+  toggleContainer.setAttribute('class', 'radio-container');
+  const toggle = creator(toggleContainer, 'input', 'append');
+  toggle.setAttribute('id', 'switch');
+  toggle.setAttribute('type', 'checkbox');
+  const toggleLabel = creator(toggleContainer, 'label', 'append');
+  toggleLabel.setAttribute('for', 'switch');
+  creator(toggleLabel, 'p', 'append').innerHTML = '°C';
+  creator(toggleLabel, 'p', 'append').innerHTML = '°F';
+  /*
   for (let i = 0; i < radioButtons.length; i += 1) {
     createRadioBtn(radioContainer, radioButtons, i);
   }
-
+  */
   return form;
-}
+};
 
 export { formSearch, units };

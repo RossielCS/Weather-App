@@ -43,14 +43,10 @@ const iconList = {
   '50n': img50N,
 };
 
-function createBGContainer(main) {
-  const background = creator(main, 'img', 'append');
-  background.setAttribute('id', 'bg-image');
-}
+const createBGContainer = main => creator(main, 'img', 'append').setAttribute('id', 'bg-image');
 
-function setBGImage(iconList, iconIndex) {
-  const background = document.getElementById('bg-image');
-  background.setAttribute('src', `${iconList[iconIndex]}`);
+const setBGImage = (iconList, iconIndex) => {
+  document.getElementById('bg-image').setAttribute('src', `${iconList[iconIndex]}`);
 
   const bgColor = document.getElementById('content');
   const weatherCont = document.getElementById('weather-container');
@@ -72,6 +68,6 @@ function setBGImage(iconList, iconIndex) {
     iconWind.setAttribute('src', `${windSLight}`);
     iconHum.setAttribute('src', `${humLight}`);
   }
-}
+};
 
 export { createBGContainer, setBGImage, iconList };

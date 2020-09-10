@@ -6,7 +6,7 @@ const symbols = {
   '03': '°F',
 };
 
-function setValues(symbols, ...params) {
+const setValues = (symbols, ...params) => {
   const [cityName, temp, feelsLike, tempMin, tempMax,
     description, icon, windSpeed, humidity] = [...params];
 
@@ -31,9 +31,9 @@ function setValues(symbols, ...params) {
     .join(' ');
   document.getElementById('weather-text-wind').innerHTML = `${windSpeed} m/s`;
   document.getElementById('weather-text-hum').innerHTML = `${humidity} %`;
-}
+};
 
-function addTemperature(parent) {
+const addTemperature = (parent) => {
   const container = creator(parent, 'section', 'append');
   container.setAttribute('id', 'weather-temperature');
 
@@ -50,18 +50,18 @@ function addTemperature(parent) {
   feelsLike.setAttribute('id', 'weather-feels-like');
 
   return container;
-}
+};
 
-function addDescription(parent) {
+const addDescription = (parent) => {
   const description = creator(parent, 'div', 'append');
   const iconDescr = creator(description, 'img', 'append');
   iconDescr.setAttribute('id', 'weather-icon-descr');
 
   const textDescr = creator(description, 'h3', 'append');
   textDescr.setAttribute('id', 'weather-text-descr');
-}
+};
 
-function addWindAndHumidity(parent) {
+const addWindAndHumidity = (parent) => {
   const wind = creator(parent, 'div', 'append');
   const iconWind = creator(wind, 'img', 'append');
   iconWind.setAttribute('id', 'weather-icon-wind');
@@ -75,9 +75,9 @@ function addWindAndHumidity(parent) {
 
   const textHum = creator(humidity, 'p', 'append');
   textHum.setAttribute('id', 'weather-text-hum');
-}
+};
 
-function createWeatherDisplay(main) {
+const createWeatherDisplay = (main) => {
   const weather = creator(main, 'article', 'append');
   weather.setAttribute('id', 'weather-container');
 
@@ -91,6 +91,6 @@ function createWeatherDisplay(main) {
   addDescription(otherInfo);
   addWindAndHumidity(otherInfo);
   return weather;
-}
+};
 
 export { createWeatherDisplay, setValues, symbols };

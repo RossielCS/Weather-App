@@ -1,0 +1,107 @@
+@import 'variables';
+@import 'mixins';
+
+form {
+  position: absolute;
+  z-index: 2;
+  grid-column: 1/2;
+  grid-row: 1/2;
+  left: 50px;
+  top: 90px;
+
+  #search-container {
+    @include flex(row, flex-start, center);
+
+    input[type='text'] {
+      height: 30px;
+      padding-left: 10px;
+      width: 150px;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 400;
+      border: none;
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    #search-btn {
+      height: 30px;
+      width: 50px;
+      border: none;
+      border-top-right-radius: 6px;
+      border-bottom-right-radius: 6px;
+
+      &:hover {
+        cursor: pointer;
+        background-image: none;
+        box-shadow: none;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  p {
+    margin-top: 15px;
+    margin-bottom: 5px;
+  }
+
+  .toggle-container {
+    margin-top: 10px;
+    width: fit-content;
+
+    .toggle {
+      position: relative;
+      display: inline-block;
+      width: 70px;
+      height: 32px;
+      font-weight: 500;
+      border-radius: 30px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 35px;
+        height: 30px;
+        border-radius: 15px;
+        top: -1px;
+        left: -1px;
+        transition: all 0.5s;
+      }
+
+      @include flex(row, space-between, center);
+
+      p {
+        width: fit-content;
+        margin: 0;
+      }
+
+      #toggle-celsius {
+        padding-left: 7px;
+        text-align: left;
+      }
+
+      #toggle-fahrenheit {
+        padding-right: 7px;
+        text-align: right;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .checkbox:checked + .toggle::after {
+      left: 32px;
+    }
+
+    .checkbox {
+      display: none;
+    }
+  }
+}

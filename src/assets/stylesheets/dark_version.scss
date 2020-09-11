@@ -1,0 +1,53 @@
+@import 'variables';
+
+.dark-version {
+  color: $tertiary-color-dark;
+  background-color: $secondary-color-dark;
+
+  #weather-container {
+    border-right: 1px solid $primary-color-dark;
+    border-bottom: 1px solid $primary-color-dark;
+    box-shadow: $tertiary-color-dark 1px 1px 4px -1px inset;
+    background-image: linear-gradient(140deg, rgba(48, 48, 48, 0.699), rgba(15, 15, 15, 0.473));
+  }
+
+  #weather-temp-main {
+    border-right: 1px solid $primary-color-dark;
+    background-color: transparent;
+  }
+
+  #search-container {
+    .weather-input {
+      background-color: $quaternary-color-dark;
+      box-shadow: $secondary-color-dark 1px 1px 4px -1px inset;
+
+      &:focus {
+        color: #fff;
+      }
+
+      &::placeholder {
+        color: #fff;
+      }
+    }
+
+    #search-btn {
+      background-image: linear-gradient(140deg, #6d0b0b, #b91d1d);
+      box-shadow: #e71717 2px 2px 4px -1px inset;
+
+      &:hover {
+        background-color: #6d0b0b;
+      }
+    }
+  }
+
+  .toggle {
+    background-color: $primary-color-dark;
+    box-shadow: 1px 1px 4px #5a0909 inset;
+    border: 2px solid $quaternary-color-dark;
+
+    &::after {
+      background-image: linear-gradient(140deg, rgb(58, 58, 58), rgb(143, 143, 143));
+      box-shadow: 0 0 3px 0 rgba(255, 255, 255, 0.445) inset;
+    }
+  }
+}

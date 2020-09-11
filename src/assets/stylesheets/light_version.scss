@@ -1,0 +1,54 @@
+@import 'variables';
+
+.light-version {
+  color: $quaternary-color-dark;
+  background-color: $secondary-color-light;
+
+  #weather-container {
+    border-right: 1px solid rgb(233, 233, 233);
+    border-bottom: 1px solid rgb(233, 233, 233);
+    box-shadow: 8px 8px 8px -2px $quaternary-color-light, $tertiary-color-light 6px 6px 4px -5px inset;
+    background-image: linear-gradient(140deg, $secondary-color-light, $tertiary-color-light);
+  }
+
+  #weather-temp-main {
+    border-right: 1.5px solid $primary-color-light;
+    background-color: transparent;
+  }
+
+  #search-container {
+    .weather-input {
+      background-color: $tertiary-color-light;
+      box-shadow: $secondary-color-dark 1px 1px 4px -3px inset;
+
+      &:focus {
+        color: $quaternary-color-light;
+      }
+
+      &::placeholder {
+        color: $quaternary-color-light;
+      }
+    }
+
+    #search-btn {
+      background-image: linear-gradient(140deg, #30b4c5, $primary-color-light);
+      box-shadow: $primary-color-light 3px 3px 4px -1px inset;
+
+      &:hover {
+        background-color: #30b4c5;
+      }
+    }
+  }
+
+  .toggle {
+    background-color: #31bed1;
+    box-shadow: 1px 1px 3px $quaternary-color-dark inset;
+    border: 2px solid #73eafa;
+    color: $tertiary-color-light;
+
+    &::after {
+      background-image: linear-gradient(140deg, #30b4c5, $primary-color-light);
+      box-shadow: 0 0 3px 0 $tertiary-color-light inset;
+    }
+  }
+}

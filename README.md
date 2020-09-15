@@ -74,10 +74,6 @@ Feel free to check the [issues page](issues/).
 
 Give an ⭐️ if you like this project!
 
-## Acknowledgments
-
-Design idea by [MaryFang](https://dribbble.com/shots/5262424-To-do-task-list) on Dribbble.
-
 ## 📝  License
 
 This project is [MIT](lic.url) licensed.

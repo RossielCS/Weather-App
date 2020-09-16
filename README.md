@@ -1,5 +1,5 @@
 # Weather-App
-> In this project, I built A weather forecast site using the OpenWeatherMap API.  
+> In this project, I built a weather forecast site using the OpenWeatherMap API.  
 Here I applied DOM manipulation by dynamically rendering the website using JavaScript, Modules, and Webpack.
 
 ## Screenshot
@@ -10,7 +10,7 @@ Here I applied DOM manipulation by dynamically rendering the website using JavaS
 
 ## Live Demo
 
-You can try it [here](https://raw.githack.com/RossielCS/Weather-App/feature_weather_app/dist/index.html).
+You can try it [here](https://rossielcs-weather-app.netlify.app/).
 
 ## :hammer:  Built With
 

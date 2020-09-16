@@ -27,7 +27,7 @@ const setOtherValues = (...params) => {
   const [cityName, description, icon, windSpeed, humidity] = [...params];
 
   document.getElementById('city-name').innerHTML = `${cityName}`;
-  document.getElementById('weather-icon-descr').setAttribute('src', `http://openweathermap.org/img/wn/${icon}.png`);
+  document.getElementById('weather-icon-descr').setAttribute('src', `https://openweathermap.org/img/wn/${icon}.png`);
   document.getElementById('weather-text-descr').innerHTML = `${description}`
     .split(' ')
     .map(x => x.charAt(0).toUpperCase() + x.slice(1))

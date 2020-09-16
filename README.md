@@ -1,5 +1,5 @@
 # Weather-App
-> In this project, I built A weather forecast site using the OpenWeatherMap API.  
+> In this project, I built a weather forecast site using the OpenWeatherMap API.  
 Here I applied DOM manipulation by dynamically rendering the website using JavaScript, Modules, and Webpack.
 
 ## Screenshot
